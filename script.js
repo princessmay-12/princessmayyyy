@@ -1,20 +1,8 @@
-// ===============================
-// ARRAY FOR THE NUMBERS
-// ===============================
-
 let numbers = [];
-
-
-// These control whether the results
-// are displayed
-
 let showTotal = false;
 let showHighestLowest = false;
 
 
-// ===============================
-// INSERT NUMBER
-// ===============================
 
 function insertNumber() {
 
@@ -22,8 +10,6 @@ function insertNumber() {
 
     let value = Number(input.value);
 
-
-    // Check if input is empty
 
     if (input.value === "") {
 
@@ -33,8 +19,6 @@ function insertNumber() {
     }
 
 
-    // Check if number is positive
-
     if (value <= 0) {
 
         alert("Please insert a positive number.");
@@ -42,28 +26,17 @@ function insertNumber() {
         return;
     }
 
-
-    // Add number to array
-
     numbers.push(value);
-
-
-    // Display numbers
 
     displayNumbers();
 
 
-    // Clear input box
 
     input.value = "";
 
     input.focus();
 }
 
-
-// ===============================
-// DISPLAY NUMBERS
-// ===============================
 
 function displayNumbers() {
 
@@ -74,16 +47,12 @@ function displayNumbers() {
 
     numbers.forEach(function(number, index) {
 
-        // Create row
 
         let row = document.createElement("div");
 
         row.className = "number-row";
 
 
-        // ===============================
-        // NUMBER
-        // ===============================
 
         let numberText = document.createElement("span");
 
@@ -92,10 +61,7 @@ function displayNumbers() {
         numberText.textContent = number;
 
 
-        // ===============================
-        // EVEN OR ODD
-        // ===============================
-
+ 
         let typeText = document.createElement("span");
 
         typeText.className = "type";
@@ -112,10 +78,6 @@ function displayNumbers() {
         }
 
 
-        // ===============================
-        // REMOVE BUTTON
-        // ===============================
-
         let removeButton = document.createElement("button");
 
         removeButton.className = "action-btn";
@@ -130,10 +92,6 @@ function displayNumbers() {
         };
 
 
-        // ===============================
-        // EDIT BUTTON
-        // ===============================
-
         let editButton = document.createElement("button");
 
         editButton.className = "action-btn";
@@ -147,8 +105,6 @@ function displayNumbers() {
 
         };
 
-
-        // Add elements to row
 
         row.appendChild(numberText);
 
@@ -167,9 +123,6 @@ function displayNumbers() {
 }
 
 
-// ===============================
-// REMOVE NUMBER
-// ===============================
 
 function removeNumber(index) {
 
@@ -181,10 +134,6 @@ function removeNumber(index) {
 }
 
 
-// ===============================
-// EDIT NUMBER
-// ===============================
-
 function editNumber(index) {
 
     let newNumber = prompt(
@@ -192,8 +141,6 @@ function editNumber(index) {
         numbers[index]
     );
 
-
-    // If user clicks Cancel
 
     if (newNumber === null) {
 
@@ -204,8 +151,6 @@ function editNumber(index) {
     newNumber = Number(newNumber);
 
 
-    // Check if valid
-
     if (isNaN(newNumber) || newNumber <= 0) {
 
         alert("Please enter a valid positive number.");
@@ -214,8 +159,6 @@ function editNumber(index) {
     }
 
 
-    // Update number
-
     numbers[index] = newNumber;
 
 
@@ -223,11 +166,6 @@ function editNumber(index) {
 
     displayResult();
 }
-
-
-// ===============================
-// CLEAR ENTRY
-// ===============================
 
 function clearEntry() {
 
@@ -238,10 +176,6 @@ function clearEntry() {
     input.focus();
 }
 
-
-// ===============================
-// CLEAR ALL ITEMS
-// ===============================
 
 function clearItems() {
 
@@ -260,10 +194,6 @@ function clearItems() {
 }
 
 
-// ===============================
-// GET TOTAL
-// ===============================
-
 function getTotal() {
 
     if (numbers.length === 0) {
@@ -280,10 +210,6 @@ function getTotal() {
 }
 
 
-// ===============================
-// GET HIGHEST AND LOWEST
-// ===============================
-
 function getHighestLowest() {
 
     if (numbers.length === 0) {
@@ -299,21 +225,12 @@ function getHighestLowest() {
     displayResult();
 }
 
-
-// ===============================
-// DISPLAY RESULT
-// ===============================
-
 function displayResult() {
 
     let result = document.getElementById("result");
 
     result.innerHTML = "";
 
-
-    // ===============================
-    // TOTAL
-    // ===============================
 
     if (showTotal) {
 
@@ -333,10 +250,6 @@ function displayResult() {
             "<br>";
     }
 
-
-    // ===============================
-    // HIGHEST AND LOWEST
-    // ===============================
 
     if (showHighestLowest && numbers.length > 0) {
 
@@ -359,25 +272,17 @@ function displayResult() {
 }
 
 
-// ===============================
-// SORT NUMBERS
-// ===============================
-
 function sortNumbers() {
 
     let sortType =
         document.getElementById("sortSelect").value;
 
 
-    // If no option selected
-
     if (sortType === "") {
 
         return;
     }
 
-
-    // If no numbers
 
     if (numbers.length === 0) {
 
@@ -386,10 +291,6 @@ function sortNumbers() {
         return;
     }
 
-
-    // ===============================
-    // ASCENDING
-    // ===============================
 
     if (sortType === "ascending") {
 
@@ -400,10 +301,6 @@ function sortNumbers() {
         });
     }
 
-
-    // ===============================
-    // DESCENDING
-    // ===============================
 
     if (sortType === "descending") {
 
@@ -420,10 +317,6 @@ function sortNumbers() {
     displayResult();
 }
 
-
-// ===============================
-// BUTTON EVENTS
-// ===============================
 
 document
     .getElementById("insertButton")
@@ -454,10 +347,6 @@ document
     .getElementById("sortSelect")
     .addEventListener("change", sortNumbers);
 
-
-// ===============================
-// ENTER KEY
-// ===============================
 
 document
     .getElementById("numberInput")
